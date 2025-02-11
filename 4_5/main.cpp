@@ -22,7 +22,7 @@ int main()
 {   
     int n = 21;
     int nsv = n-2;
-    int hb = 3;
+    int hb = 2;
     bool select = false;
     double L;
 
@@ -37,7 +37,7 @@ int main()
 
     double dx = L / (n-1);
     double lambda = 1.0;
-    double *A = new double[nsv*nsv];
+    double *A = new double[hb*nsv];
     double *f = new double[n];
     double *u = new double[n];
     double *e = new double[n];
