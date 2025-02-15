@@ -6,7 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
-using namespace std;
+
 
 const int SIZE = 8;
 const int RANGE = 5;
@@ -47,9 +47,9 @@ void multiply(int A[][SIZE], int B[][SIZE], int C[][SIZE]) {
 void printMatrix(int A[][SIZE]) {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
-            cout << setw(5) << A[i][j] << "  ";
+            std::cout << std::setw(5) << A[i][j] << "  ";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 }
 
@@ -67,13 +67,13 @@ int main() {
     }
 
     // Print matrices
-    cout << "Matrix A: " << endl;
+    std::cout << "Matrix A: " << std::endl;
     printMatrix(A);
-    cout << "Matrix B: " <<endl;
+    std::cout << "Matrix B: " <<std::endl;
     printMatrix(B);
 
     // Perform recursive multiplication and print matrix
-    cout << "Matrix C: " << endl;
+    std::cout << "Matrix C: " << std::endl;
     recursiveMult(A,B,C,0,0,0,0,0,0,SIZE);
     printMatrix(C);
 
