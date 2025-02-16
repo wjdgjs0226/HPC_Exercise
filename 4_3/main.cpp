@@ -1,12 +1,26 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-#include "nonblas.h"
+#include <cblas.h>
+//#include "nonblas.h"
 #include "conjugate_gradient.h"
+#include <boost/program_options.hpp>
+namespace po = boost::program_options;
 
-int main()
+int main(int argc, char* argv[])
 {
-    int n = 2;
+
+    po::options_description opts("Executes Conjugate Gradient Method to solve the equation r = b - Ax");
+    opts.add_options()
+        ("size", po::value<int>()->default_value(5),
+                 "Numer of elements in the vector.")
+        ("help",       "Print help message.");
+
+    po::variables_map vm;
+    po::store(po::parse_command_line(argc, argv, opts), vm);
+    po::notify(vm);
+
+    const int n = vm["size"].as<int>();
     srand(time(0));
     double *M = new double[n * n];
     double *A = new double[n * n];
@@ -28,8 +42,9 @@ int main()
     }
 
     // Operate Matrix Multiplication to calculate A
-    int start = 0;
-    nonblas(M, A, start, start, start, start, start, start, n, n);
+    //int start = 0;
+    //nonblas(M, A, start, start, start, start, start, start, n, n);
+    cblas_dgemm(CblasColMajor,CblasTrans,CblasNoTrans,n,n,n,1.0,M,n,M,n,1.0,A,n); // Use Cblas Method Instead of nonblas
 
 /*
     for (int k = 0; k < n; ++k)
