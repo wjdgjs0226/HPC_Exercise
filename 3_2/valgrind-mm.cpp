@@ -6,7 +6,7 @@ int main() {
     int i;
     int j;
     int k;
-    double f;
+    // Remove f (Unused Variables)
     constexpr int s = 1000;
     constexpr int S = s*s;
 
