@@ -73,13 +73,6 @@ int main()
         b[j] = 0.0;   
     }
     
-    /*
-    b[n-3] =     -coeffb*sin(M_PI*(L+h));
-    b[n-2] =  4.0*coeffb*sin(M_PI*(L+h)) -     coeffb*sin(M_PI*(L+2.0*h));
-    b[n-1] = -5.0*coeffb*sin(M_PI*(L+h)) + 4.0*coeffb*sin(M_PI*(L+2.0*h))
-                - coeffb*sin(M_PI*(L+3.0*h));
-    */
-    
     b[n-3] += coeffb*(-sin(M_PI*(L+h)));
     b[n-2] += coeffb*(4.0*sin(M_PI*(L+h))-sin(M_PI*(L+2*h)));
     b[n-1] += coeffb*((-5.0)*sin(M_PI*(L+h))+4.0*sin(M_PI*(L+2*h))-sin(M_PI*(L+3*h)));
