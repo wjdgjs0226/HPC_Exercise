@@ -20,7 +20,7 @@ int main()
 
     const int n = s.size();
     const int n_out = n/2 + 1;
-    const double samplerate = 1000.0;
+    
     fftw_complex *out;
     fftw_plan p; 
      
@@ -30,6 +30,18 @@ int main()
 
     fftw_execute(p); /* repeat as needed */
     fftw_destroy_plan(p);
+
+    for(int i = 0; i < n_out; ++i)
+    {
+        double mod = sqrt(out[i][0]*out[i][0] + out[i][1]*out[i][1]);
+        std::cout << mod << std::endl;
+        if(mod > 40)
+        {
+            out[i][0] = 0.0;
+            out[i][1] = 0.0;
+        }
+        else{}
+    }
     
 
     std::vector <double> filtered(n);
@@ -39,15 +51,14 @@ int main()
     fftw_execute(q); /* repeat as needed */
     fftw_destroy_plan(q);
 
-    double freq_bsize = samplerate/n;
-
 
     
     std::ofstream output("filtered_output.txt");
 
     for (int i = 0; i < n; ++i)
     {
-        std::cout << filtered[i] << std::endl;
+
+        //std::cout << filtered[i] << std::endl;
         output << filtered[i] << std::endl;
     }
 
