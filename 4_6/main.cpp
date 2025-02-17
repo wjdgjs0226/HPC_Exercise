@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cmath>
 #include <iomanip>
 #include <cblas.h>
@@ -12,7 +13,7 @@ int main(int argc, char* argv[])
     // Get the user input using boost library
     po::options_description opts("Calculate the transient heat equation in one dimension, based on the given number of grid points to use, the time-step size and the number of time steps.");
     opts.add_options()
-        ("gpoints", po::value<int>()->default_value(20),"Numer of grid points")
+        ("gpoints", po::value<int>()->default_value(21),"Numer of grid points")
         ("ts_size", po::value<double>()->default_value(0.001), "Timestep size")
         ("ts_number", po::value<int>()->default_value(200), "Number of timesteps")
         ("help",       "Print help message.");
@@ -34,10 +35,11 @@ int main(int argc, char* argv[])
     const int ldA = 2; // Symmetric Matrix
     const int reduced_gpoints = gpoints - 2; // Reduced Points
     double L = 1.0; // Length of the domain
-    double dx = L/(gpoints-1.0); // Grid size
+    double dx = L/(gpoints-1); // Grid size
     double* A = new double[ldA*reduced_gpoints]; // A Matrix for U^(k+1) = A*U^k
     double* u = new double[gpoints]; // U Vector
     double* u1 = new double[gpoints]; // U^(k+1) Vector
+    
     
 
     // Populate the Tridiagonal Matrix A
@@ -51,12 +53,24 @@ int main(int argc, char* argv[])
         u[i] = sin(M_PI*i*dx);
     }
 
+    std::ofstream output("result.txt");
+    for (int l = 0; l < gpoints; ++l)
+    {
+        output << u[l] << std::setw(10);
+    }
+    output << std::endl;
+
     // Run the integration
-    int k = 0; // Variable to count the number of timesteps processed
+    int k = 1; // Variable to count the number of timesteps processed
     do
     {
         cblas_dsbmv(CblasColMajor,CblasUpper,reduced_gpoints,1,1.0,A,ldA,u+1,1,0.0,u1+1,1);
         cblas_dcopy(gpoints,u1,1,u,1);
+        for (int m = 0; m < gpoints; ++m)
+        {
+            output << u[m] << std::setw(10);
+        }
+        output << std::endl;
         k++;
     } while (k < ts_number);
     
