@@ -15,11 +15,3 @@ void setup(const int N) {
     populateMatrix(M, N);
     delete[] M;
 }
-
-int main() {
-    const int N = 2000;
-
-    setup(N);
-
-    return 0;
-}
