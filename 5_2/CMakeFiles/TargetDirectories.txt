@@ -1,0 +1,3 @@
+/home/jl4519/Year4/Exercise_Files/5_2/CMakeFiles/LAPACK_BandedSym.dir
+/home/jl4519/Year4/Exercise_Files/5_2/CMakeFiles/edit_cache.dir
+/home/jl4519/Year4/Exercise_Files/5_2/CMakeFiles/rebuild_cache.dir
