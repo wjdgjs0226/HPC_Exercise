@@ -1,0 +1,38 @@
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: /home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-VZbb6m
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1f79f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1f79f.dir/build.make CMakeFiles/cmTC_1f79f.dir/build
+gmake[1]: Entering directory '/home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-VZbb6m'
+Building C object CMakeFiles/cmTC_1f79f.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles/cmTC_1f79f.dir/CheckFunctionExists.c.o -c /home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-VZbb6m/CheckFunctionExists.c
+Linking C executable cmTC_1f79f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f79f.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgemm_ -rdynamic CMakeFiles/cmTC_1f79f.dir/CheckFunctionExists.c.o -o cmTC_1f79f 
+/usr/bin/ld: CMakeFiles/cmTC_1f79f.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_1f79f.dir/build.make:99: cmTC_1f79f] Error 1
+gmake[1]: Leaving directory '/home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-VZbb6m'
+gmake: *** [Makefile:127: cmTC_1f79f/fast] Error 2
+
+
+
+Determining if the function cheev_ exists failed with the following output:
+Change Dir: /home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-TN7FuQ
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3bf46/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3bf46.dir/build.make CMakeFiles/cmTC_3bf46.dir/build
+gmake[1]: Entering directory '/home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-TN7FuQ'
+Building C object CMakeFiles/cmTC_3bf46.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=cheev_ -o CMakeFiles/cmTC_3bf46.dir/CheckFunctionExists.c.o -c /home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-TN7FuQ/CheckFunctionExists.c
+Linking C executable cmTC_3bf46
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3bf46.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_3bf46.dir/CheckFunctionExists.c.o -o cmTC_3bf46  /usr/lib/x86_64-linux-gnu/libblas.so -lm -ldl 
+/usr/bin/ld: CMakeFiles/cmTC_3bf46.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `cheev_'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_3bf46.dir/build.make:100: cmTC_3bf46] Error 1
+gmake[1]: Leaving directory '/home/jl4519/Year4/Exercise_Files/11_1/CMakeFiles/CMakeScratch/TryCompile-TN7FuQ'
+gmake: *** [Makefile:127: cmTC_3bf46/fast] Error 2
+
+
+

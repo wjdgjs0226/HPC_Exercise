@@ -9,4 +9,4 @@ dbg_test: dbg_test.o dbg.o
 .PHONY: clean
 
 clean:
-	rm -f dbg dbg_test *.o
+	rm -f *.o
